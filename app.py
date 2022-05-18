@@ -9,6 +9,10 @@ app.config['SECRET_KEY'] = "qwerasdf"
 
 db = SQLAlchemy(app)
 
+@app.route('/') 
+def index():
+    return render_template('index.html')
+
 if __name__ == '__main__':
     app.debug = True
     db.create_all() 
