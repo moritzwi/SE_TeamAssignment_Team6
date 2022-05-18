@@ -3,4 +3,28 @@
 {% block title %}SingUp{% endblock %}
 
 {% block content %}
+<form method="POST" class="sign-up">
+    <div class ="form">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username"/>
+    </div>
+    <div class ="form">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password"/>
+    </div>
+    <div class ="form">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name"/>
+    </div>
+    <div class ="form">
+        <label for="picture">Picture</label>
+        <input type="file" id="picture" name="picture">
+    </div>
+    <div class ="form">
+        <label for="email">E-Mail Adress</label>
+        <input type="email" id="email" name="email"/>
+    </div>  
+    <br>
+    <button type="submit" class="button">Submit</button>
+</form>
 {% endblock %}
