@@ -2,6 +2,10 @@
 
 {% block title %}SingUp{% endblock %}
 
+{% block pageTitle %}
+<p>SignUp</p>
+{% endblock %}
+
 {% block content %}
 <h1>Sign Up</h1>
 <form method="POST" class="sign-up">
@@ -19,7 +23,7 @@
     </div>
     <div class ="form">
         <label for="picture">Picture</label>
-        <input type="file" id="picture" name="picture">
+        <input type="file" id="picture" name="picture" accept=".jpeg .png">
     </div>
     <div class ="form">
         <label for="email">E-Mail Adress</label>
