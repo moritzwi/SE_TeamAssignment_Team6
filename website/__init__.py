@@ -1,10 +1,13 @@
 from flask import Flask
-# from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
 
 def create_app():
     app = Flask(__name__)
-    # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///team6.sqlite3' 
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///team6.sqlite3' 
     app.config['SECRET_KEY'] = "qwerasdf"
+    db.init_app(app)
     
     from .views import views
     from .auth import auth
