@@ -1,3 +1,7 @@
+body{
+  background-color: rgb(237, 235, 235);
+}
+
 nav {
   background-color: white;
   overflow: auto;
@@ -6,16 +10,18 @@ nav {
 .pageTitle {
   padding: 0;
   margin: auto;
+  margin-top: -20px;
   text-align: center;
   background: orange;
-  color: black;
-  font-size: 20px;
+  color: white;
+  font-size: 30px;
   border-radius: 18px;
-  width: 300px;
+  width: 35%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 ul {
-  margin-top: -43px;
+  margin-top: -58px;
   list-style-type: none;
   float: right;
 }
@@ -52,4 +58,35 @@ li a {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+}
+
+
+/*----------- products -----------*/
+
+.sortBy {
+  justify-content: space-between;
+  margin: 100px auto 50px;
+}
+.product-row{
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
+
+.product {
+  background-color: whitesmoke;
+  margin: 10px;
+  width: 25%;
+  height: 200px;
+}
+
+.product-img {
+  width: 100px;
+  height: 100px;
+}
+
+.product-details{
+  width: 100px;
+  height: 100px;
+  margin: 10px;
 }
