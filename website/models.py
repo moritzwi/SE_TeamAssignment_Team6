@@ -16,7 +16,6 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(150))
     name = db.Column(db.String(150))
     username = db.Column(db.String(150))
-    notes = db.relationship('Note')
     
 # class Product(db.Model):
     
