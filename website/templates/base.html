@@ -14,10 +14,13 @@
             {% endblock %}
         </div>
         <ul>
+            {% if user.is_authenticated %}
             <li><a id="shop" href="/shop">Shop</a></li>
-            <li><a id="login" href="/login">LogIn</a></li>
             <li><a id="logout" href="/logout">Logout</a></li>
+            {% else %}
+            <li><a id="login" href="/login">LogIn</a></li>
             <li><a id="sign-up" href="/sign-up">SignUp</a></li>
+            {% endif %}
         </ul>
     </nav>
 
