@@ -1,5 +1,6 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 from flask_login import current_user, login_required
+from .forms import Addproduct
 
 
 views = Blueprint('views', __name__)
@@ -17,10 +18,12 @@ def shop():
 def user_products():
     return render_template("user-products.html", user=current_user)
 
-@views.route('/add-product')
+@views.route('/add-product', methods=['POST', 'GET'])
 def add_product():
-    return render_template("add-product.html", user=current_user)
+    form = Addproduct(request.form)
+    return render_template("add-product.html", user=current_user, form=form)
 
 @views.route('/edit-product')
 def edit_product():
     return render_template("edit-product.html", user=current_user)
+
