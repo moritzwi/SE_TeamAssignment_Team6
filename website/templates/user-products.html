@@ -7,7 +7,31 @@
 {% endblock %}
 
 {% block content %}
+<form action="/add-product">
+    <button class="btn"><i class="fa fa-plus">&nbsp; Add Product</i></button>
+</form>
 
-<a id="edit" href="/edit-product">Edit Product</a>
-<a id="add" href="/add-product">Add Product</a>
+<br>
+<br>
+
+<div class="container">
+    <div class="product-row">
+        {% for product in products %}  
+        <div class="product-grid">
+            <div class="product-image">
+                <a href="/edit-product">
+                    <img class="pic-1" src="user.png">
+                </a>
+            </div>
+            <div class="product-content">
+                <h3 class="title"><a href="#">{{ product.name }}</a></h3>
+                <div class="price">${{ product.price }}</div>
+                <a class="edit" href="edit-product">Edit</a>
+                <a href= {{ url_for('views.delete', name = product.name) }}>delete</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
 {% endblock %}

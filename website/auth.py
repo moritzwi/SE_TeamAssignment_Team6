@@ -47,8 +47,8 @@ def sign_up():
             flash('Username already exist.', category='error')
         if email:
             flash('Email already exist.', category='error')
-        elif len(email) < 4:
-            flash("Email must be greater then 4 characters", category="error")
+        # elif len(email) < 4:
+        #     flash("Email must be greater then 4 characters", category="error")
         elif len(username) < 5:
             flash("Username must be greater then 5 characters", category="error")
         elif len(name) < 2:
