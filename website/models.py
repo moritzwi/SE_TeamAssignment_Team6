@@ -19,7 +19,7 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String(150))
     
     
-class Products(db.Model):
+class products(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
     price = db.Column(db.Numeric(10,2), nullable=False)
