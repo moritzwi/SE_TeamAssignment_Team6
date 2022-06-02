@@ -19,7 +19,7 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String(150))
     
     
-class products(db.Model):
+class Products(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
     price = db.Column(db.Numeric(10,2), nullable=False)
@@ -28,6 +28,7 @@ class products(db.Model):
     image_1 = db.Column(db.Text, default='image.jpg')
     image_2 = db.Column(db.Text, default='image.jpg')
     image_3 = db.Column(db.Text, default='image.jpg')
+    
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __init__(self, name, price, keywords, description, image_1, image_2, image_3): 
