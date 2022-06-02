@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block content %}
+<h1>Here are your products, {{ current_user.username }}:</h1>
 <form action="/add-product">
     <button class="btn"><i class="fa fa-plus">&nbsp; Add Product</i></button>
 </form>
@@ -20,7 +21,7 @@
         <div class="product-grid">
             <div class="product-image">
                 <a href="/edit-product">
-                    <img class="pic-1">{{ product.image_1 }}</img>
+                    <img class="pic-1" src="data:;{{ product.image_1 }}">
                 </a>
             </div>
             <div class="product-content">

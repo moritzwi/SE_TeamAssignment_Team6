@@ -38,17 +38,11 @@ def sign_up():
         username = request.form.get('username')
         password = request.form.get('password')
         name = request.form.get('name')
-        email = request.form.get('email')
         
         user = User.query.filter_by(username=username).first()
-        email = User.query.filter_by(email=email).first()
         
         if user:
             flash('Username already exist.', category='error')
-        if email:
-            flash('Email already exist.', category='error')
-        # elif len(email) < 4:
-        #     flash("Email must be greater then 4 characters", category="error")
         elif len(username) < 5:
             flash("Username must be greater then 5 characters", category="error")
         elif len(name) < 2:
@@ -56,12 +50,11 @@ def sign_up():
         elif len(password) < 8:
             flash("Password must be greater then 8 characters", category="error")
         else:
-            new_user = User(email=email, username=username, name=name, password=generate_password_hash(password, method='sha256'))
+            new_user = User(username=username, name=name, password=generate_password_hash(password, method='sha256'))
             db.session.add(new_user)
             db.session.commit()
-            login_user(user, remember=True)
             flash('User created!')
-            return redirect(url_for('views.home'))
+            return redirect(url_for('auth.login'))
         
     return render_template("sign-up.html", user=current_user)
 

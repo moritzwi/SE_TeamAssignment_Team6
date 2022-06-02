@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
+from sqlalchemy.orm.exc import NoResultFound, MultipleResultsFound
 from flask_login import current_user, login_required
 from . import db
 from .models import products
@@ -7,9 +8,8 @@ from .models import products
 views = Blueprint('views', __name__)
 
 @views.route('/')
-
 def home():
-    return render_template("home.html", user=current_user)
+    return render_template("home.html", user=current_user, products = products.query.all()) 
 
 @views.route('/shop')
 def shop():
@@ -19,7 +19,7 @@ def shop():
 
 @views.route('/user-products')
 def user_products():
-    return render_template("user-products.html", user=current_user, products = products.query.all())
+    return render_template("user-products.html", user=current_user)
 
 @views.route('/add-product', methods = ['GET', 'POST']) 
 def add_product():
@@ -27,10 +27,10 @@ def add_product():
         if not request.form['name'] or not request.form['price'] or not request.form['description']: 
             flash('Please enter all the fields', 'error')
         else:
-            product = products(request.form['name'], 
-                               request.form['price'], 
-                               request.form['keywords'],
-                               request.form['description'],
+            product = products(request.form.get['name'], 
+                               request.form.get['price'], 
+                               request.form.get['keywords'],
+                               request.form.get['description'],
                                request.form.get("image1", False),
                                request.form.get("image2", False),
                                request.form.get("image3", False))
@@ -44,6 +44,10 @@ def add_product():
 @views.route('/edit-product')
 def edit_product():
     return render_template("edit-product.html", user=current_user)
+
+@views.route('/see-db')
+def see_db():
+    return render_template("see-db.html", user=current_user)
 
 @views.route('/delete/<name>') 
 def delete(name):
