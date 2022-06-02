@@ -7,7 +7,10 @@
 {% endblock %}
 
 {% block content %}
-<h1>Here are your products, {{ current_user.username }}:</h1>
+
+
+<h1>Here are your products, {{ current_user.id }}, :</h1>
+
 <form action="/add-product">
     <button class="btn"><i class="fa fa-plus">&nbsp; Add Product</i></button>
 </form>
@@ -17,18 +20,18 @@
 
 <div class="container">
     <div class="product-row">
-        {% for product in products %}  
+        {% for product in products %}
         <div class="product-grid">
             <div class="product-image">
                 <a href="/edit-product">
-                    <img class="pic-1" src="data:;{{ product.image_1 }}">
+                    <img class="pic-1">
                 </a>
             </div>
             <div class="product-content">
                 <h3 class="title"><a href="#">{{ product.name }}</a></h3>
                 <div class="price">${{ product.price }}</div>
                 <a class="edit" href="edit-product">Edit</a>
-                <a href= {{ url_for('views.delete', name = product.name) }}>delete</a>
+                <a href= {{ url_for('views.delete', name = product.name) }}>Delete</a>
             </div>
         </div>
         {% endfor %}

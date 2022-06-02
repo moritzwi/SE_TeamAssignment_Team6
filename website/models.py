@@ -25,10 +25,9 @@ class products(db.Model):
     price = db.Column(db.Numeric(10,2), nullable=False)
     keywords = db.Column(db.String(200), nullable=False)
     description = db.Column(db.Text, nullable=False)
-    image_1 = db.Column(db.String(150), default='image.jpg')
-    image_2 = db.Column(db.String(150), default='image.jpg')
-    image_3 = db.Column(db.String(150), default='image.jpg')
-    
+    image_1 = db.Column(db.Text, default='image.jpg')
+    image_2 = db.Column(db.Text, default='image.jpg')
+    image_3 = db.Column(db.Text, default='image.jpg')
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __init__(self, name, price, keywords, description, image_1, image_2, image_3): 
