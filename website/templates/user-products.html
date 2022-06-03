@@ -30,7 +30,7 @@
             <div class="product-content">
                 <h3 class="title"><a href="#">{{ product.name }}</a></h3>
                 <div class="price">${{ product.price }}</div>
-                <a class="edit" href="edit-product">Edit</a>
+                <a href={{ url_for('views.edit_product', id = product.id) }}>Edit</a>
                 <a href= {{ url_for('views.delete', name = product.name) }}>Delete</a>
             </div>
         </div>

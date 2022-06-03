@@ -1,3 +1,4 @@
+from turtle import update
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from sqlalchemy.orm.exc import NoResultFound, MultipleResultsFound
 from flask_login import current_user, login_required
@@ -30,10 +31,7 @@ def add_product():
             product = products(request.form['name'], 
                                request.form['price'], 
                                request.form['keywords'],
-                               request.form['description'],
-                               request.files['image_1'],
-                               request.files['image_2'],
-                               request.files['image_3'])
+                               request.form['description'])
             db.session.add(product) 
             db.session.commit()
             
@@ -41,9 +39,18 @@ def add_product():
             return redirect(url_for('views.user_products'))
     return render_template('add-product.html', user=current_user)
 
-@views.route('/edit-product')
-def edit_product():
-    return render_template("edit-product.html", user=current_user)
+@views.route('/edit-product/<id>', methods = ['GET', 'POST'])
+def edit_product(id):
+    update_product = products.query.filter_by(id = id).first() 
+    if request.method == 'POST':
+        update_product.name = request.form['name']
+        update_product.price = request.form['price']
+        update_product.keywords = request.form['keywords'] 
+        update_product.description = request.form['description'] 
+        db.session.commit()
+        flash('Record was successfully updated') 
+        return redirect(url_for('views.user_products'))
+    return render_template('edit-product.html', user=current_user, product = update_product)
 
 @views.route('/delete/<name>') 
 def delete(name):
