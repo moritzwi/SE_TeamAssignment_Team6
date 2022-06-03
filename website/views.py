@@ -8,20 +8,26 @@ from .models import products
 
 views = Blueprint('views', __name__)
 
+### home ###
 @views.route('/')
 def home():
     return render_template("home.html", user=current_user, products = products.query.all()) 
 
+### Shop ###
 @views.route('/shop')
 def shop():
     return render_template("shop.html", user=current_user, products = products.query.all())
 
+
+
 ### User Products ###
 
+#View user prodcuts
 @views.route('/user-products')
 def user_products():
     return render_template("user-products.html", user=current_user, products = products.query.all())
 
+# Add Product
 @views.route('/add-product', methods = ['GET', 'POST']) 
 def add_product():
     if request.method == 'POST':
@@ -39,19 +45,24 @@ def add_product():
             return redirect(url_for('views.user_products'))
     return render_template('add-product.html', user=current_user)
 
+# Add Product
 @views.route('/edit-product/<id>', methods = ['GET', 'POST'])
 def edit_product(id):
     update_product = products.query.filter_by(id = id).first() 
     if request.method == 'POST':
-        update_product.name = request.form['name']
-        update_product.price = request.form['price']
-        update_product.keywords = request.form['keywords'] 
-        update_product.description = request.form['description'] 
-        db.session.commit()
-        flash('Record was successfully updated') 
-        return redirect(url_for('views.user_products'))
+        if not request.form['name'] or not request.form['price'] or not request.form['description']: 
+            flash('Please enter all the fields', 'error')
+        else:
+            update_product.name = request.form['name']
+            update_product.price = request.form['price']
+            update_product.keywords = request.form['keywords'] 
+            update_product.description = request.form['description'] 
+            db.session.commit()
+            flash('Record was successfully updated') 
+            return redirect(url_for('views.user_products'))
     return render_template('edit-product.html', user=current_user, product = update_product)
 
+# Delete Product
 @views.route('/delete/<name>') 
 def delete(name):
     product = products.query.filter_by(name = name).first() 
