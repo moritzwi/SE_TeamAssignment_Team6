@@ -7,31 +7,33 @@
 {% endblock %}
 
 {% block content %}
-<form action = "{{ url_for('views.add_product') }}" enctype="multipart/form-data" method="POST">
-    <h3>Product Information</h3>
+<div class="con-add-pro">
+    <form action = "{{ url_for('views.add_product') }}" enctype="multipart/form-data" method="POST">
+        <h3>Product Information</h3>
 
-    <label for="name">Productname</label>
-    <input type = "name" name = "name" class="input"></br>
+        <label for="name">Productname</label>
+        <input type = "name" name = "name" class="input"></br>
 
-    <label for="prics">Price</label>
-    <input type = "price" name = "price" class="input"></br>
+        <label for="prics">Price</label>
+        <input type = "price" name = "price" class="input"></br>
 
-    <label for="keywords">Keywords</label>
-    <input type = "keywords" name = "keywords" class="input"></br>
+        <input type="file" name = "image_1" class="image_1">
 
-    <label for="description">Description</label>
-    <input type = "description" name = "description" class="input"></br>
+        <input type="file" name = "image_2" accept=".jpeg .png .jpg .gif" class="image_2">
 
-    <p>Image1</p>
-    <input type="file" name = "image_1">
+        <input type="file" name = "image_3" accept=".jpeg .png .jpg .gif" class="image_3">
 
-    <p>Image2</p>
-    <input type="file" name = "image_2" accept=".jpeg .png .jpg .gif">
+        <br> 
 
-    <p>Image3</p>
-    <input type="file" name = "image_3" accept=".jpeg .png .jpg .gif">
+        <label for="description" class="label_description">Description</label>
+        <input type = "description" name = "description" class="description">
 
-    <input type = "submit" vlaue = "submit"></br>
-</form>
+        <label for="keywords" class="label_keywords">Keywords</label>
+        <input type = "keywords" name = "keywords" class="keywords">
 
+        <div class="Sbutton">
+            <input type = "submit" vlaue = "submit" class="btn"></br>
+        </div>
+    </form>
+</div>
 {% endblock %}

@@ -53,10 +53,9 @@ li a {
   border-radius: 5px;
   padding: 20px;
   background-color: white;
-  height: 80%;
 }
 
-/*----------- singUp & LogIn -----------*/
+/*----------- Froms -----------*/
 label{
   font-weight: bold;
 }
@@ -69,6 +68,46 @@ label{
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+}
+
+.description{
+  position: relative; 
+  bottom: -30px;
+  width: 30%;
+  height: 200px;
+  padding: 12px 20px;
+  margin: 8px 0px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.keywords{
+  position: relative; 
+  bottom: -30px;
+  right: -468px;
+  width: 30%;
+  height: 200px;
+  padding: 12px 20px;
+  margin: 8px 0px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.label_keywords{
+  display:relative;
+  position: absolute; 
+  bottom: 350px;
+  right: 322px;
+}
+
+.label_description{
+  display:relative;
+  position: absolute; 
+  bottom: 350px;
 }
 
 
@@ -85,6 +124,7 @@ label{
 
 .Sbutton{
   text-align: center;
+  margin-top: 20px;
 }
 
 .btn .text{

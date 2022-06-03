@@ -16,21 +16,22 @@
     <label for="prics">Price</label>
     <input type = "price" name = "price" class="input" placeholder={{ product.price }}></br>
 
-    <label for="keywords">Keywords</label>
-    <input type = "keywords" name = "keywords" class="input" placeholder={{ product.keywords }}></br>
+    <input type="file" name = "image_1" class="image_1">
 
-    <label for="description">Description</label>
-    <input type = "description" name = "description" class="input" placeholder={{ product.keywords }}></br>
+    <input type="file" name = "image_2" accept=".jpeg .png .jpg .gif" class="image_2">
 
-    <p>Image1</p>
-    <input type="file" name = "image_1">
+    <input type="file" name = "image_3" accept=".jpeg .png .jpg .gif" class="image_3">
 
-    <p>Image2</p>
-    <input type="file" name = "image_2" accept=".jpeg .png .jpg .gif">
+    <br> 
 
-    <p>Image3</p>
-    <input type="file" name = "image_3" accept=".jpeg .png .jpg .gif">
+    <label for="description" class="label_description">Description</label>
+    <input type = "description" name = "description" class="description" placeholder={{ product.description }}>
 
-    <input type = "submit" vlaue = "submit"></br>
+    <label for="keywords" class="label_keywords">Keywords</label>
+    <input type = "keywords" name = "keywords" class="keywords" placeholder={{ product.keywords }}>
+
+    <div class="Sbutton">
+        <input type = "submit" vlaue = "submit" class="btn"></br>
+    </div>
 </form>
 {% endblock %}
