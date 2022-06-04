@@ -4,6 +4,9 @@ from sqlalchemy.orm.exc import NoResultFound, MultipleResultsFound
 from flask_login import current_user, login_required
 from . import db
 from .models import products
+from werkzeug.utils import secure_filename
+import uuid as uuid 
+import os
 
 
 views = Blueprint('views', __name__)
@@ -31,13 +34,14 @@ def user_products():
 @views.route('/add-product', methods = ['GET', 'POST']) 
 def add_product():
     if request.method == 'POST':
-        if not request.form['name'] or not request.form['price'] or not request.form['description']: 
+        if not request.form['name'] or not request.form['description']: 
             flash('Please enter all the fields', 'error')
-        else:
+        else:   
             product = products(request.form['name'], 
                                request.form['price'], 
                                request.form['keywords'],
-                               request.form['description'])
+                               request.form['description'],
+                               request.form['sold'])
             db.session.add(product) 
             db.session.commit()
             
@@ -56,7 +60,8 @@ def edit_product(id):
             update_product.name = request.form['name']
             update_product.price = request.form['price']
             update_product.keywords = request.form['keywords'] 
-            update_product.description = request.form['description'] 
+            update_product.description = request.form['description']
+            update_product.sold = request.form['sold']
             db.session.commit()
             flash('Record was successfully updated') 
             return redirect(url_for('views.user_products'))

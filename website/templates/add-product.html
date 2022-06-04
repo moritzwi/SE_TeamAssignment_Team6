@@ -11,17 +11,27 @@
     <form action = "{{ url_for('views.add_product') }}" enctype="multipart/form-data" method="POST">
         <h3>Product Information</h3>
 
+        <label for="available">Available</label>
+        <label class="switch">
+            <input type="checkbox" name="available" checked>
+            <span class="slider round"></span>
+        </label>
+
+        <br>
+        <br>
+
         <label for="name">Productname</label>
         <input type = "name" name = "name" class="input"></br>
 
-        <label for="prics">Price</label>
+        <label for="price">Price</label>
         <input type = "price" name = "price" class="input"></br>
 
+        <label for="sold">Sold?</label>
+        <input type = "sold" name = "sold" class="input"></br>
+
+        <label for="image_1">Image</label>
+        <br>
         <input type="file" name = "image_1" class="image_1">
-
-        <input type="file" name = "image_2" accept=".jpeg .png .jpg .gif" class="image_2">
-
-        <input type="file" name = "image_3" accept=".jpeg .png .jpg .gif" class="image_3">
 
         <br> 
 

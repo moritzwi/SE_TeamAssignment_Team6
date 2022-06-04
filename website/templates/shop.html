@@ -14,7 +14,11 @@
         <div class="product-grid">
             <div class="product-image">
                 <a href="#Link zum Produkt">
-                    <img class="pic-1" src="user.png">
+                    {% if product.sold == "sold" %}
+                    <img class="pic-1" src="static/images/sold.jpg">
+                    {% else %}
+                    <img class="pic-1" src="static/images/user.png">
+                    {% endif %}
                 </a>
                 <ul class="social">
                     <li><a href="#Productside" data-tip="View"> <i class="fa fa-search"></i></a></li>
