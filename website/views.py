@@ -61,7 +61,7 @@ def edit_product(id):
             update_product.price = request.form['price']
             update_product.keywords = request.form['keywords'] 
             update_product.description = request.form['description']
-            update_product.sold = request.form['sold']
+            update_product.sold = request.form.get('sold')
             db.session.commit()
             flash('Record was successfully updated') 
             return redirect(url_for('views.user_products'))
