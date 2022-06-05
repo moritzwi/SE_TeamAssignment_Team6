@@ -37,12 +37,22 @@ def add_product():
         if not request.form['name'] or not request.form['description']: 
             flash('Please enter all the fields', 'error')
         else:   
-            product = products(request.form['name'], 
-                               request.form['price'], 
-                               request.form['keywords'],
-                               request.form['description'],
-                               request.form['sold'])
-            db.session.add(product) 
+            name = request.form['name']
+            price = request.form['price']
+            keywords= request.form['keywords']
+            description = request.form['description']
+            image_1 = request.files['image_1']
+            sold = "not sold"
+            
+            
+            pic_filename = secure_filename(image_1.filename)
+            pic_user = str(uuid.uuid1()) + '_' + pic_filename
+            image_1.save(os.path.join("static"))
+            
+            image_1 = pic_user
+            
+            product = products(sold=sold, name=name, price=price, keywords=keywords, description=description, image_1 = image_1)
+            db.session.add(product)
             db.session.commit()
             
             flash('Product was successfully added') 
