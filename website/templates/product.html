@@ -7,37 +7,21 @@
 {% endblock %}
 
 {% block content %}
-
-
-<h1>Here are your products, {{ current_user.id }}:</h1>
-
-<form action="/add-product">
-    <button class="btn"><i class="fa fa-plus">&nbsp; Add Product</i></button>
-</form>
-
-<br>
-<br>
-
 <div class="container">
-    <div class="product-row">
-        {% for product in products %}
-        {% if current_user.id == product.user.id %}
-        <div class="product-grid">
-            <div class="product-image">
-                <a href="/edit-product">
-                    <img class="pic-1" src="static/images/user.png">
-                </a>
+    <h3 class="h3">{{ products.name }}</h3>
+            <div class="product-image-single">
+                {% if products.sold == "sold" %}
+                <img class="pic-1-single" src="static/images/sold.jpg">
+                {% else %}
+                <img class="pic-1-single" src="static/images/2.jpg">
+                {% endif %}
             </div>
-            <div class="product-content">
-                <h3 class="title"><a href="#">{{ product.name }}</a></h3>
-                <div class="price">${{ product.price }}</div>
-                <a href={{ url_for('views.edit_product', id = product.id) }}>Edit</a>
-                <a href= {{ url_for('views.delete', name = product.name) }}>Delete</a>
+
+            <div class="product-content-single">
+                <h3 class="h3">{{ products.description }}</h3>
+                <h3 class="h3">$ {{ products.price }}</h3>
+                <h3 class="h3">{{ products.sold }}</h3>
             </div>
-        </div>
-        {% endif %}
-        {% endfor %}
-    </div>
 </div>
 
 {% endblock %}

@@ -17,7 +17,10 @@ def home():
 def shop():
     return render_template("shop.html", user=current_user, products = products.query.all())
 
-
+### Product Details ###
+@views.route('/product/<int:id>')
+def product(id):
+    return render_template("product.html", user=current_user, products = products.query.get_or_404(id))
 
 ### User Products ###
 
