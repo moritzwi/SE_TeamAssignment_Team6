@@ -1,13 +1,9 @@
+from distutils.command.config import config
 from turtle import update
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-from sqlalchemy.orm.exc import NoResultFound, MultipleResultsFound
-from flask_login import current_user, login_required
-from . import db
+from flask_login import current_user, login_required, current_user
+from . import db 
 from .models import products
-from werkzeug.utils import secure_filename
-import uuid as uuid 
-import os
-
 
 views = Blueprint('views', __name__)
 
@@ -41,17 +37,10 @@ def add_product():
             price = request.form['price']
             keywords= request.form['keywords']
             description = request.form['description']
-            image_1 = request.files['image_1']
             sold = "not sold"
+            user = current_user.id 
             
-            
-            pic_filename = secure_filename(image_1.filename)
-            pic_user = str(uuid.uuid1()) + '_' + pic_filename
-            image_1.save(os.path.join("static"))
-            
-            image_1 = pic_user
-            
-            product = products(sold=sold, name=name, price=price, keywords=keywords, description=description, image_1 = image_1)
+            product = products(sold=sold, name=name, price=price, keywords=keywords, description=description, user_id=user)
             db.session.add(product)
             db.session.commit()
             
@@ -59,7 +48,7 @@ def add_product():
             return redirect(url_for('views.user_products'))
     return render_template('add-product.html', user=current_user)
 
-# Add Product
+# Edit Product
 @views.route('/edit-product/<id>', methods = ['GET', 'POST'])
 def edit_product(id):
     update_product = products.query.filter_by(id = id).first() 

@@ -37,7 +37,6 @@ def sign_up():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-        name = request.form.get('name')
         
         user = User.query.filter_by(username=username).first()
         
@@ -45,12 +44,10 @@ def sign_up():
             flash('Username already exist.', category='error')
         elif len(username) < 5:
             flash("Username must be greater then 5 characters", category="error")
-        elif len(name) < 2:
-            flash("Name must be greater then 2 characters", category="error")
         elif len(password) < 8:
             flash("Password must be greater then 8 characters", category="error")
         else:
-            new_user = User(username=username, name=name, password=generate_password_hash(password, method='sha256'))
+            new_user = User(username=username, password=generate_password_hash(password, method='sha256'))
             db.session.add(new_user)
             db.session.commit()
             flash('User created!')

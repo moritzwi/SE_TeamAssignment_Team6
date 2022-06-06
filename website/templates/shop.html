@@ -13,11 +13,11 @@
         {% for product in products %}
         <div class="product-grid">
             <div class="product-image">
-                <a href="#Link zum Produkt">
+                <a href="Product">
                     {% if product.sold == "sold" %}
                     <img class="pic-1" src="static/images/sold.jpg">
                     {% else %}
-                    <img class="pic-1" src="static/images/user.png">
+                    <img class="pic-1" src="{{ url_for('static', filename='images/' + product.image_1)}}">
                     {% endif %}
                 </a>
                 <ul class="social">
