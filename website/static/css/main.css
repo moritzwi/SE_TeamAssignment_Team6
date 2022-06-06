@@ -367,9 +367,23 @@ h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
     box-sizing: border-box;
 }
 
+.product-content-user{
+  position: relative;
+  right: -650px;
+  bottom: 405px;
+  width: 50%;
+  height: 150px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
 .product-description{
   position: relative;
-  bottom: 150px;
+  bottom: 240px;
   width: 50%;
   height: 150px;
   padding: 12px 20px;
