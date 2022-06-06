@@ -8,20 +8,18 @@
 
 {% block content %}
 <div class="container">
-    <h3 class="h3">{{ products.name }}</h3>
-            <div class="product-image-single">
-                {% if products.sold == "sold" %}
-                <img class="pic-1-single" src="static/images/sold.jpg">
-                {% else %}
-                <img class="pic-1-single" src="static/images/2.jpg">
-                {% endif %}
-            </div>
+        <div class="product-image-single">
+            <img class="pic-1-single" src="static/images/2.jpg">
+        </div>
 
-            <div class="product-content-single">
-                <h3 class="h3">{{ products.description }}</h3>
-                <h3 class="h3">$ {{ products.price }}</h3>
-                <h3 class="h3">{{ products.sold }}</h3>
-            </div>
+        <div class="product-content-single">
+            <h3 class="product-info">{{ products.name }}</h3>
+            <h3 class="product-info">$ {{ products.price }}</h3>
+        </div>
+
+        <div class="product-description">
+            <p style="font-weight: lighter; color: grey; font-size: medium;">Description</p>
+            {{ products.description }}</div>
 </div>
 
 {% endblock %}
