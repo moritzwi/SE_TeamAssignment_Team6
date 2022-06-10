@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-<form action = "{{ url_for('views.edit_product', id = product.id) }}" method="POST">
+<form action = "{{ url_for('views.edit_product', id = product.id) }}" enctype="multipart/form-data" method="POST">
     <h3>Update Product Information</h3>
 
     <label for="sold">Sold</label>
@@ -25,9 +25,9 @@
     <label for="prics">Price</label>
     <input type = "price" name = "price" class="input" value={{ product.price }}></br>
 
-    <label for="image_1">Image</label>
+    <label for="picture">Image</label>
     <br>
-    <input type="file" name = "image_1" class="image_1">
+    <input type="file" name = "picture" class="image_1">
 
     <br>
 

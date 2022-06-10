@@ -13,19 +13,19 @@
     <!-- Full-width images with number and caption text -->
     <div class="mySlides fade">
       <div class="numbertext">1 / 3</div>
-      <img src="static/1.jpg" style="width: 100%; max-height: 500px; min-height: 500px">
+      <img src="/website/static/images/1.jpg" style="width: 100%; max-height: 500px; min-height: 500px">
       <div class="text">Caption Text</div>
     </div>
   
     <div class="mySlides fade">
       <div class="numbertext">2 / 3</div>
-      <img src="static/2.jpg" style="width: 100%; max-height: 500px; min-height: 500px">
+      <img src="/website/static/images/2.jpg" style="width: 100%; max-height: 500px; min-height: 500px">
       <div class="text">Caption Two</div>
     </div>
   
     <div class="mySlides fade">
       <div class="numbertext">3 / 3</div>
-      <img src="static/Logo.jpeg" style="width: 100%; max-height: 500px; min-height: 500px">
+      <img src="/website/static/images/Logo.jpeg" style="width: 100%; max-height: 500px; min-height: 500px">
       <div class="text">Caption Three</div>
     </div>
   
@@ -52,7 +52,7 @@
         {% for product in products %}  
         <div class="product-grid" style="width: 33%">
             <div class="product-image">
-                    <img class="pic-1" src="static/2.jpg">
+              <img class="pic-1" src={{ '/' + product.picture }}>
             </div>
             <div class="product-content">
                 <h3 class="title"><a href="/shop">{{ product.name }}</a></h3>

@@ -1,9 +1,13 @@
+from asyncio.windows_events import NULL
 from distutils.command.config import config
+import imp
 from turtle import update
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import current_user, login_required, current_user
 from . import db 
-from .models import products
+from .models import User, products, follow
+from werkzeug.utils import secure_filename
+from sqlalchemy import and_
 
 views = Blueprint('views', __name__)
 
@@ -18,8 +22,19 @@ def shop():
     return render_template("shop.html", user=current_user, products = products.query.all())
 
 ### Product Details ###
-@views.route('/product/<int:id>')
+@views.route('/product/<int:id>', methods = ['GET', 'POST'])
 def product(id):
+    #follow_rel = follow.query.filter_by(and_(follow.u_id_follower == current_user.id, follow.u_id_followee == products.user.id))
+    #if request.form["click"] == 1:
+    #    if follow_rel == NULL:
+    #        relation = follow(u_id_follower = current_user, u_id_followee = products.user.id)
+    #        db.session.add(relation)
+    #        db.session.commit()
+    #    else:
+    #        relation = follow_rel.first()
+    #        db.session.delete(relation)
+    #        db.session.commit()
+    #return render_template("product.html", user=current_user, products = products.query.get_or_404(id), flag = follow_rel)
     return render_template("product.html", user=current_user, products = products.query.get_or_404(id))
 
 ### User Products ###
@@ -33,17 +48,23 @@ def user_products():
 @views.route('/add-product', methods = ['GET', 'POST']) 
 def add_product():
     if request.method == 'POST':
-        if not request.form['name'] or not request.form['description']: 
-            flash('Please enter all the fields', 'error')
+        if not request.form['name']or not request.form['price'] or not request.form['description']: 
+            flash('Please enter the fields name, price and description', 'error')
         else:   
             name = request.form['name']
             price = request.form['price']
+            picture = request.files['picture']
             keywords= request.form['keywords']
             description = request.form['description']
             sold = "not sold"
             user = current_user.id 
             
-            product = products(sold=sold, name=name, price=price, keywords=keywords, description=description, user_id=user)
+            if picture.filename == "":
+                product = products(sold=sold, name=name, price=price, picture="website/static/images/upload/" + "default.png", keywords=keywords, description=description, user_id=user)
+            else:
+                product = products(sold=sold, name=name, price=price, picture="website/static/images/upload/" + picture.filename, keywords=keywords, description=description, user_id=user)
+                picture.save("website/static/images/upload/" + picture.filename)        
+            
             db.session.add(product)
             db.session.commit()
             
@@ -54,26 +75,38 @@ def add_product():
 # Edit Product
 @views.route('/edit-product/<id>', methods = ['GET', 'POST'])
 def edit_product(id):
-    update_product = products.query.filter_by(id = id).first() 
+    update_product = products.query.filter_by(id = id).first()
     if request.method == 'POST':
         if not request.form['name'] or not request.form['price'] or not request.form['description']: 
-            flash('Please enter all the fields', 'error')
+            flash('Please enter the fields name, price and description', 'error')
         else:
             update_product.name = request.form['name']
             update_product.price = request.form['price']
-            update_product.keywords = request.form['keywords'] 
+            update_product.keywords = request.form['keywords']
             update_product.description = request.form['description']
             update_product.sold = request.form.get('sold')
+            
+            if request.files['picture'] == "":
+                print("Todo")
+            else:
+                update_product.picture = "website/static/images/upload/" + request.files['picture'].filename
+                request.files['picture'].save(update_product.picture)
+            
             db.session.commit()
-            flash('Record was successfully updated') 
+            
+            flash('Record was successfully updated')
             return redirect(url_for('views.user_products'))
     return render_template('edit-product.html', user=current_user, product = update_product)
 
 # Delete Product
 @views.route('/delete/<name>') 
 def delete(name):
-    product = products.query.filter_by(name = name).first() 
+    product = products.query.filter_by(name = name).first()
     db.session.delete(product)
     db.session.commit()
     return	render_template('user-products.html', products = products.query.all(), user=current_user)
 
+# search by keywords
+@views.route('/result-products', methods = ['GET', 'POST'])
+def searchbykeyword():
+    return render_template('result-products.html', user=current_user, products = products.query.filter(products.keywords.contains(request.form['ksearch'])))

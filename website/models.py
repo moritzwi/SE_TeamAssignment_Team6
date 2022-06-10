@@ -1,3 +1,4 @@
+from csv import unix_dialect
 from email.policy import default
 from enum import unique
 from . import db
@@ -16,16 +17,24 @@ class products(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
     price = db.Column(db.Numeric(10,2), nullable=False)
+    picture = db.Column(db.String(200), nullable=False)
     keywords = db.Column(db.String(200), nullable=False)
     description = db.Column(db.Text, nullable=False)
     sold = db.Column(db.String(80), nullable=True)
     
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-    def __init__(self, name, price, keywords, description, sold, user_id = user_id): 
+    def __init__(self, name, price, picture, keywords, description, sold, user_id = user_id): 
         self.name = name
         self.price = price
+        self.picture = picture
         self.keywords = keywords
         self.description = description
         self.sold = sold
         self.user_id = user_id
+
+
+class follow(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    u_id_follower = db.Column(db.Integer, nullable=False)
+    u_id_followee = db.Column(db.Integer, nullable=False)
