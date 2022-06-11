@@ -333,10 +333,10 @@ h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
 }
 
 /*----------- Single Product -----------*/
-.product-image-single{
+.pic-1-single{
   position: relative;
   width: 50%;
-  height: 400px;
+  height: 200px;
   padding: 12px 20px;
   margin: 8px 0px;
   display: inline-block;
