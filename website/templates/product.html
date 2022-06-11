@@ -9,6 +9,7 @@
 {% block content %}
 
 <div class="container">
+<<<<<<< HEAD
 
         <div class="product-content-single">
             <div class="product-image-single">
@@ -17,8 +18,32 @@
             <h3 class="product-info">{{ products.name }}</h3>
             <h3 class="product-info">$ {{ products.price }}</h3>
             <input type="text" class="input" name="amount" placeholder="Amount"/>
+=======
+    <div class="product-content-single">
+        <img class="pic-1-single" src={{ '/' + products.picture }}>
+        <div class="product-content-single-info">
+            <h1 style="margin-top:0;">{{ products.name }}</h1>
+            <h2 class="product-info">$ {{ products.price }}</h2>
+            <input type="text" class="product-info" placeholder="Amount"/>
+>>>>>>> e00714e658f9e9391e4428946e701b79a1c1c481
             <button type="submit" class="btn" style="width: 100%">Add to card</button>
+            <br>
+            <br>
+            <div class="product-content-user">
+                <h2 style="margin: 0;">Seller:</h2>
+                <h3>{{ products.user.username }}</h3>
+                <form action="{{ url_for('views.follow', username=products.user.username) }}" method="post">
+                    <button type="submit" class="btn">Follow</button>
+                </form>
+            </div>
+            <br>
+            <br>
+            <div class="product-description">
+                <p style="font-weight: lighter; color: grey; font-size: medium;">Description</p>
+                {{ products.description }}
+            </div>
         </div>
+<<<<<<< HEAD
 
         <div class="product-description">
             <p style="font-weight: lighter; color: grey; font-size: medium;">Description</p>
@@ -31,6 +56,10 @@
                 <button type="submit" class="btn">Follow</button>
             </form>
         </div>
+=======
+    </div>
+    
+>>>>>>> e00714e658f9e9391e4428946e701b79a1c1c481
 </div>
 
 {% endblock %}

@@ -333,48 +333,43 @@ h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
 }
 
 /*----------- Single Product -----------*/
+<<<<<<< HEAD
 .pic-1-single{
   position: relative;
   width: 50%;
   height: 200px;
   padding: 12px 20px;
+=======
+.product-content-single{
+  position: relative;
+  width: 100%;
+>>>>>>> e00714e658f9e9391e4428946e701b79a1c1c481
   margin: 8px 0px;
   display: inline-block;
-  border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
 }
 
-.product-content-single{
-  position: relative;
-  right: -650px;
-  bottom: 424px;
+.pic-1-single{
   width: 50%;
-  margin: 8px 0px;
   display: inline-block;
   border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.product-content-single-info{
+  position: absolute;
+  right: 0;
+  width: 45%;
+  display: inline-block;
   box-sizing: border-box;
 }
 
 .product-info{
-    width: 100%;
-    padding: 12px 20px;
-    left: 0px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.product-content-user{
-  position: relative;
-  right: -650px;
-  bottom: 405px;
-  width: 50%;
-  height: 150px;
-  padding: 12px 20px;
+  width: 100%;
   margin: 8px 0;
+  margin-top: 0;
+  padding: 12px 20px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -382,16 +377,23 @@ h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
 }
 
 .product-description{
-  position: relative;
-  bottom: 240px;
-  width: 50%;
-  height: 150px;
+  width: 100%;
   padding: 12px 20px;
-  left: 0px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
 }
+
+.product-content-user{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
 
