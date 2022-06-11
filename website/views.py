@@ -77,3 +77,19 @@ def delete(name):
     db.session.commit()
     return	render_template('user-products.html', products = products.query.all(), user=current_user)
 
+# follow user 
+@views.route('/follow/<username>', methods=['POST'])
+@login_required
+def follow(username):
+    user = User.query.filter_by(username= username).first()
+    if user is None:
+        flash('User {} not found.'.format(username))
+    if user == current_user:
+        flash('You cannot follow yourself!')
+        return redirect(url_for('views.shop', products = products.query.all()))
+    else:
+        current_user.follow(user)
+        db.session.commit()
+        flash('You are following {}!'.format(username))
+        return redirect(url_for('views.shop', products = products.query.all()))
+
