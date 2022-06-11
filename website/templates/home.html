@@ -52,8 +52,16 @@
         {% for product in products %}  
         <div class="product-grid" style="width: 33%">
             <div class="product-image">
-              <img class="pic-1" src={{ '/' + product.picture }}>
+              {% if product.sold == "sold" %}
+              <img class="pic-1" src="/website/static/images/soldout.png">
+              {% else %}
+              <img class="pic-1" src={{'/' + product.picture}}>
+              {% endif %}
             </div>
+            <ul class="social">
+              <li><a href="{{url_for('views.product', id=product.id)}}" data-tip="View"> <i class="fa fa-search"></i></a></li>
+              <li><a href="#heremissinglinktoshoppingcart" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+            </ul>
             <div class="product-content">
                 <h3 class="title"><a href="/shop">{{ product.name }}</a></h3>
                 <div class="price">${{ product.price }}</div>

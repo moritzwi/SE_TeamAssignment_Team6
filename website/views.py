@@ -24,17 +24,6 @@ def shop():
 ### Product Details ###
 @views.route('/product/<int:id>', methods = ['GET', 'POST'])
 def product(id):
-    #follow_rel = follow.query.filter_by(and_(follow.u_id_follower == current_user.id, follow.u_id_followee == products.user.id))
-    #if request.form["click"] == 1:
-    #    if follow_rel == NULL:
-    #        relation = follow(u_id_follower = current_user, u_id_followee = products.user.id)
-    #        db.session.add(relation)
-    #        db.session.commit()
-    #    else:
-    #        relation = follow_rel.first()
-    #        db.session.delete(relation)
-    #        db.session.commit()
-    #return render_template("product.html", user=current_user, products = products.query.get_or_404(id), flag = follow_rel)
     return render_template("product.html", user=current_user, products = products.query.get_or_404(id))
 
 ### User Products ###
@@ -86,11 +75,13 @@ def edit_product(id):
             update_product.description = request.form['description']
             update_product.sold = request.form.get('sold')
             
-            if request.files['picture'] == "":
-                print("Todo")
-            else:
+            
+            if request.files['picture'].filename != "":
                 update_product.picture = "website/static/images/upload/" + request.files['picture'].filename
                 request.files['picture'].save(update_product.picture)
+            else:
+                print("Todo")
+                update_product.picture = update_product.picture
             
             db.session.commit()
             
@@ -126,3 +117,4 @@ def follow(username):
         db.session.commit()
         flash('You are following {}!'.format(username))
         return redirect(url_for('views.shop', products = products.query.all()))
+    #todo unfollow

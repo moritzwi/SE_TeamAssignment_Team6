@@ -25,7 +25,11 @@
         <div class="product-grid">
             <div class="product-image">
                 <a href={{ url_for('views.product', id = product.id) }}>
-                    <img class="pic-1" src={{ '/' + product.picture }}>
+                    {% if product.sold == "sold" %}
+                    <img class="pic-1" src="/website/static/images/soldout.png">
+                    {% else %}
+                    <img class="pic-1" src={{'/' + product.picture}}>
+                    {% endif %}
                 </a>
             </div>
             <div class="product-content">

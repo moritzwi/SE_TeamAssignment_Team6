@@ -26,12 +26,11 @@
                 {% endif %}
                 <ul class="social">
                     <li><a href="{{url_for('views.product', id=product.id)}}" data-tip="View"> <i class="fa fa-search"></i></a></li>
-                    <li><a href="#Warenkorb" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+                    <li><a href="#heremissinglinktoshoppingcart" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
                 </ul>
-
             </div>
             <div class="product-content">
-                <h3 class="title"><a href="#">{{product.name}}</a></h3>
+                <h3 class="title"><a href={{ url_for('views.product', id = product.id) }}>{{product.name}}</a></h3>
                 <div class="price">{{product.price}}</div>
                 <a class="add-to-cart" href="#">+ Add To Cart</a>
             </div>
