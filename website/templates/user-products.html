@@ -24,12 +24,12 @@
         {% if current_user.id == product.user.id %}
         <div class="product-grid">
             <div class="product-image">
-                <a href="/edit-product">
-                    <img class="pic-1" src="static/images/user.png">
+                <a href={{ url_for('views.product', id = product.id) }}>
+                    <img class="pic-1" src={{ '/' + product.picture }}>
                 </a>
             </div>
             <div class="product-content">
-                <h3 class="title"><a href="#">{{ product.name }}</a></h3>
+                <h3 class="title"><a href={{ url_for('views.product', id = product.id) }}>{{ product.name }}</a></h3>
                 <div class="price">${{ product.price }}</div>
                 <a href={{ url_for('views.edit_product', id = product.id) }}>Edit</a>
                 <a href= {{ url_for('views.delete', name = product.name) }}>Delete</a>

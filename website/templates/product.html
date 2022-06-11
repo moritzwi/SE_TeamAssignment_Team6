@@ -9,7 +9,7 @@
 {% block content %}
 <div class="container">
         <div class="product-image-single">
-            <img class="pic-1-single" src="static/images/2.jpg">
+            <img class="pic-1-single" src={{ '/' + products.picture }}>
         </div>
 
         <div class="product-content-single">
@@ -26,7 +26,14 @@
         <div class="product-content-user">
             <h3>Seller</h3>
             {{ products.user.username }}
-            <button type="submit" class="btn">Follow</button>
+            <form method="POST" class="container">
+                <input type="hidden" name="click" value="1">
+                {%if True%} <!-- flag != NULL -->
+                    <button type="submit" class="btn">Follow</button>
+                {%else%}
+                    <button type="submit" class="btn">Unfollow</button>
+                {% endif %}
+            </form>
         </div>
 </div>
 

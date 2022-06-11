@@ -3,14 +3,14 @@
 {% block title %} Shop {% endblock %}
 
 {% block pageTitle %}
-<p>Shop</p>
+<p>Result products</p>
 {% endblock %}
 
 {% block content %}
 <div class="container">
-    <h3 class="h3">Products</h3>
+    <h3 class="h3">Product results</h3>
     <div class="product-row">
-        <form action="{{ url_for('views.searchbykeyword') }}" method="POST" class="container">
+        <form method="POST" class="container">
             <label for="keywordsearch">Search via keyword</label>
             <input type="text" class="input" id="keywordsearch" name="ksearch"/>
         </form>

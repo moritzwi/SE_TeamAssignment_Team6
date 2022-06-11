@@ -8,29 +8,27 @@
 
 {% block content %}
 <div class="con-add-pro">
-    <form action = "{{ url_for('views.add_product') }}" enctype="multipart/form-data" method="POST">
+    <form action="{{ url_for('views.add_product') }}" enctype="multipart/form-data" method="POST">
         <h3>Product Information</h3>
 
         <label for="name">Productname</label>
-        <input type = "name" name = "name" class="input"></br>
+        <input type="text" name="name" class="input"></br>
 
         <label for="price">Price</label>
-        <input type = "price" name = "price" class="input"></br>
+        <input type="number" name="price" class="input"></br>
 
-        <label for="image_1">Image</label>
+        <label for="picture">Image</label>
         <br>
-        <input type="file" name = "image_1" class="image_1">
-
-        <br> 
+        <input type="file" name="picture" class="image_1"><br> 
 
         <label for="description" class="label_description">Description</label>
-        <input type = "description" name = "description" class="description">
+        <input type="text" name="description" class="description">
 
         <label for="keywords" class="label_keywords">Keywords</label>
-        <input type = "keywords" name = "keywords" class="keywords">
+        <input type="text" name="keywords" class="keywords">
 
         <div class="Sbutton">
-            <input type = "submit" vlaue = "submit" class="btn"></br>
+            <input type="submit" vlaue="submit" class="btn"></br>
         </div>
     </form>
 </div>
