@@ -181,6 +181,13 @@ input:checked + .slider:before {
   font-size: 16px;
   cursor: pointer;
 }
+.btnsold {
+  border: none;
+  border-radius: 5px;
+  color: red;
+  padding: 12px 16px;
+  font-size: 16px;
+}
 
 .Sbutton{
   text-align: center;
@@ -188,6 +195,9 @@ input:checked + .slider:before {
 }
 
 .btn .text{
+  font-size: large;
+}
+.btnsold .text{
   font-size: large;
 }
 
