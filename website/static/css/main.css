@@ -333,15 +333,7 @@ h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
 }
 
 /*----------- Single Product -----------*/
-
-.pic-1-single{
-  position: relative;
-  width: 50%;
-  height: 200px;
-  padding: 12px 20px;
-
 .product-content-single{
-  position: relative;
   width: 100%;
   margin: 8px 0px;
   display: inline-block;
@@ -351,31 +343,16 @@ h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
 
 .pic-1-single{
   width: 50%;
-  display: inline-block;
-  border-radius: 4px;
-  box-sizing: border-box;
+  height: auto;
 }
 
 .product-content-single-info{
-  position: absolute;
-  right: 0;
-  width: 45%;
+  width: 49%;
   display: inline-block;
   box-sizing: border-box;
 }
 
 .product-info{
-  width: 100%;
-  margin: 8px 0;
-  margin-top: 0;
-  padding: 12px 20px;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.product-description{
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -386,9 +363,19 @@ h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
 }
 
 .product-content-user{
+  position: relative;
   width: 100%;
   padding: 12px 20px;
-  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.product-description{
+  position: relative;
+  width: 100%;
+  padding: 12px 20px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
