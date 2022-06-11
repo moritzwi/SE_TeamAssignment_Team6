@@ -91,9 +91,5 @@ def follow(username):
         current_user.follow(user)
         db.session.commit()
         flash('You are following {}!'.format(username))
-<<<<<<< HEAD
-        return redirect(url_for('views.shop', products = products.query.all()))
-=======
         return redirect(url_for('views.shop', products = products.query.all()))
 
->>>>>>> e00714e658f9e9391e4428946e701b79a1c1c481
