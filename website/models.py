@@ -11,10 +11,6 @@ followers = db.Table(
     db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
 )
 
-<<<<<<< HEAD
-
-=======
->>>>>>> e00714e658f9e9391e4428946e701b79a1c1c481
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(150))
