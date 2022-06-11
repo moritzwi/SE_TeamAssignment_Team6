@@ -10,9 +10,11 @@
 <div class="container">
     <h3 class="h3">Product results</h3>
     <div class="product-row">
-        <form method="POST" class="container">
+        <form action="{{ url_for('views.searchbykeyword') }}" method="POST" class="container" style="width: 500px;">
             <label for="keywordsearch">Search via keyword</label>
-            <input type="text" class="input" id="keywordsearch" name="ksearch"/>
+            <br>
+            <input type="text" class="input" id="keywordsearch" name="ksearch" style="width:65% !important;"/>
+            <input type = "submit" value = "Search" class="input" style="width:30% !important;"></br>
         </form>
     </div>
     <div class="product-row">
@@ -26,7 +28,7 @@
                 {% endif %}
                 <ul class="social">
                     <li><a href="{{url_for('views.product', id=product.id)}}" data-tip="View"> <i class="fa fa-search"></i></a></li>
-                    <li><a href="#Warenkorb" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+                    <li><a href="#heremissinglinktoshoppingcart" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
                 </ul>
 
             </div>

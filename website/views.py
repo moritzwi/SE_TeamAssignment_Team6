@@ -113,4 +113,24 @@ def follow(username):
         db.session.commit()
         flash('You are following {}!'.format(username))
         return redirect(url_for('views.shop', products = products.query.all()))
-    #todo unfollow
+
+#todo unfollow
+@views.route('/unfollow/<username>', methods=['POST'])
+@login_required
+def unfollow(username):
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        flash('User {} not found.'.format(username))
+    if user == current_user:
+        flash('You cannot unfollow yourself!')
+        return redirect(url_for('views.shop', products = products.query.all()))
+    else:
+        current_user.unfollow(user)
+        db.session.commit()
+        flash('You are not following {}.'.format(username))
+        return redirect(url_for('views.shop', products = products.query.all()))
+
+# filter by followed
+@views.route('/result-products-followed', methods = ['GET', 'POST'])
+def filterbyfollowed():
+    return render_template('result-products.html', user=current_user, products = current_user.followed_products())

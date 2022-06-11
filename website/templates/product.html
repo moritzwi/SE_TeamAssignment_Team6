@@ -15,18 +15,24 @@
             <h2 class="product-info">$ {{ products.price }}</h2>
             <input type="text" class="product-info" placeholder="Amount"/>
             {% if products.sold == "sold" %}
-            <button type="button" class="btnsold" style="width: 100%" disabled>Sold out</button>
+                <button type="button" class="btnsold" style="width: 100%" disabled>Sold out</button>
             {% else %}
-            <button type="submit" class="btn" style="width: 100%">Add to card</button>
+                <button type="submit" class="btn" style="width: 100%">Add to card</button>
             {% endif %}
             <br>
             <br>
             <div class="product-content-user">
                 <h2 style="margin: 0;">Seller:</h2>
                 <h3>{{ products.user.username }}</h3>
-                <form action="{{ url_for('views.follow', username=products.user.username) }}" method="post">
-                    <button type="submit" class="btn">Follow</button>
-                </form>
+                {% if current_user.is_following(products.user)%}
+                    <form action="{{ url_for('views.unfollow', username=products.user.username) }}" method="post">
+                        <button type="submit" class="btn">Unfollow</button>
+                    </form>
+                {% else %}
+                    <form action="{{ url_for('views.follow', username=products.user.username) }}" method="post">
+                        <button type="submit" class="btn">Follow</button>
+                    </form>
+                {% endif %}
             </div>
             <br>
             <br>
