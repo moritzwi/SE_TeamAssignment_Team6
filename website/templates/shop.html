@@ -7,6 +7,11 @@
 {% endblock %}
 
 {% block content %}
+
+<p>{{ user.followers.count() }} followers, {{ user.followed.count () }} following. 
+    Bla: {{ user.followed_products () }}
+</p>
+
 <div class="container">
     <h3 class="h3">Products</h3>
     <div class="product-row">

@@ -40,7 +40,10 @@ class User(db.Model, UserMixin):
             return products.query.join(
                 followers, (followers.c.followed_id == products.user_id)).filter(
                     followers.c.follower_id == self.id)
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 
     
 class products(db.Model):

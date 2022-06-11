@@ -4,10 +4,15 @@ import imp
 from turtle import update
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import current_user, login_required, current_user
+<<<<<<< HEAD
 from . import db 
 from .models import User, products
 from werkzeug.utils import secure_filename
 from sqlalchemy import and_
+=======
+from . import db
+from .models import products, User
+>>>>>>> main
 
 views = Blueprint('views', __name__)
 
@@ -106,11 +111,14 @@ def delete(name):
     db.session.commit()
     return	render_template('user-products.html', products = products.query.all(), user=current_user)
 
+<<<<<<< HEAD
 # search by keywords
 @views.route('/result-products', methods = ['GET', 'POST'])
 def searchbykeyword():
     return render_template('result-products.html', user=current_user, products = products.query.filter(products.keywords.contains(request.form['ksearch'])))
 
+=======
+>>>>>>> main
 # follow user 
 @views.route('/follow/<username>', methods=['POST'])
 @login_required
@@ -126,3 +134,7 @@ def follow(username):
         db.session.commit()
         flash('You are following {}!'.format(username))
         return redirect(url_for('views.shop', products = products.query.all()))
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
