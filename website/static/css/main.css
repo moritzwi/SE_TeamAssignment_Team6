@@ -89,7 +89,6 @@ label{
 .keywords{
   position: relative; 
   bottom: -30px;
-  right: -280px;
   width: 30%;
   height: 200px;
   padding: 12px 20px;
@@ -103,7 +102,7 @@ label{
 .label_keywords{
   position: relative; 
   bottom: 85px;
-  right: -374px;
+  right: -100px;
 }
 
 .label_description{

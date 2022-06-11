@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="con-add-pro">
+<div class="container">
     <form action="{{ url_for('views.add_product') }}" enctype="multipart/form-data" method="POST">
         <h3>Product Information</h3>
 
@@ -24,9 +24,12 @@
         <label for="description" class="label_description">Description</label>
         <input type="text" name="description" class="description">
 
-        <label for="keywords" class="label_keywords">Keywords</label>
-        <input type="text" name="keywords" class="keywords">
+        <label for="keywords" class="label_keywords" >Keywords</label>
+        <input type="text" name="keywords" class="keywords" placeholder="Seperate keywords by space">
 
+        <br>
+        <br>
+        <br>
         <div class="Sbutton">
             <input type="submit" vlaue="submit" class="btn"></br>
         </div>
