@@ -5,7 +5,7 @@ from turtle import update
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import current_user, login_required, current_user
 from . import db 
-from .models import User, products, follow
+from .models import User, products
 from werkzeug.utils import secure_filename
 from sqlalchemy import and_
 
