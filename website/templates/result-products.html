@@ -8,15 +8,21 @@
 
 {% block content %}
 <div class="container">
-    <h3 class="h3">Product results</h3>
-    <div class="product-row">
-        <form action="{{ url_for('views.searchbykeyword') }}" method="POST" class="container" style="width: 500px;">
-            <label for="keywordsearch">Search via keyword</label>
-            <br>
-            <input type="text" class="input" id="keywordsearch" name="ksearch" style="width:65% !important;"/>
-            <input type = "submit" value = "Search" class="btn" style="width:30% !important;"></br>
-        </form>
+    <h3 class="h3" style="margin:0;">Search Results</h3>
+    <div class="filter">
+        <div class="keywordsearch">
+            <form action="{{ url_for('views.searchbykeyword') }}" method="POST">
+                <label for="keywordsearch">Search via keyword</label>
+                <input type="text" class="input" id="keywordsearch" name="ksearch" style="width:65% !important;"/>
+                <input type = "submit" value = "Search" class="btn" style="width:100px !important;"></br>
+            </form>
+        </div>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="product-row">
         {% for product in products %}
         <div class="product-grid">
@@ -30,11 +36,10 @@
                     <li><a href="{{url_for('views.product', id=product.id)}}" data-tip="View"> <i class="fa fa-search"></i></a></li>
                     <li><a href="#heremissinglinktoshoppingcart" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
                 </ul>
-
             </div>
             <div class="product-content">
-                <h3 class="title"><a href="#">{{product.name}}</a></h3>
-                <div class="price">{{product.price}}</div>
+                <h3 class="title"><a href={{ url_for('views.product', id = product.id) }}>{{product.name}}</a></h3>
+                <div class="price">$ {{product.price}}</div>
                 <a class="add-to-cart" href="#">+ Add To Cart</a>
             </div>
         </div>
