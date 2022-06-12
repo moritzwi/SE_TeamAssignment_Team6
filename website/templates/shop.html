@@ -9,18 +9,23 @@
 {% block content %}
 <div class="container">
     <h3 class="h3">Products</h3>
+    <div class="filter">
+        <div class="keywordsearch" style="align-self:right;">
+            <form action="{{ url_for('views.searchbykeyword') }}" method="POST" style="width: 500px;">
+                <label for="keywordsearch">Search via keyword</label>
+                <input type="text" class="input" id="keywordsearch" name="ksearch" style="width:65% !important;"/>
+                <input type = "submit" value = "Search" class="btn" style="width:100px !important;"></br>
+            </form>
+        </div>
+        <div class="followedlist">
+            <form action="{{ url_for('views.filterbyfollowed') }}" method="POST">
+                <label for="followedlist">Filter by products of followed users</label>
+                <br>
+                <input type = "submit" value = "Use filter" class="btn" style="width: 100px; margin-top: 5px;"></br>
+            </form>
+        </div>
+    </div>
     <div class="product-row">
-        <form action="{{ url_for('views.searchbykeyword') }}" method="POST" class="container" style="width: 500px;">
-            <label for="keywordsearch">Search via keyword</label>
-            <br>
-            <input type="text" class="input" id="keywordsearch" name="ksearch" style="width:65% !important;"/>
-            <input type = "submit" value = "Search" class="input" style="width:30% !important;"></br>
-        </form>
-        <form action="{{ url_for('views.filterbyfollowed') }}" method="POST" class="container">
-            <label for="followedlist">Filter by products of followed users</label>
-            <br>
-            <input type = "submit" value = "Use filter" class="input"></br>
-        </form>
     </div>
     <div class="product-row">
         {% for product in products %}
