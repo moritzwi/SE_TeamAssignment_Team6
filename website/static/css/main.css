@@ -211,7 +211,8 @@ h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
   flex-direction: row; 
   flex-wrap: wrap;}
 
-.product-grid{width: 20%; 
+.product-grid{
+  max-width: 32%; 
   text-align: center; 
   padding: 0 0 72px; 
   border: 1px solid rgba(0,0,0,.1); 
