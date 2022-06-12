@@ -19,6 +19,7 @@ def shop():
 
 ### Product Details ###
 @views.route('/product/<int:id>', methods = ['GET', 'POST'])
+@login_required
 def product(id):
     return render_template("product.html", user=current_user, products = products.query.get_or_404(id))
 
@@ -114,7 +115,7 @@ def follow(username):
         flash('You are following {}!'.format(username))
         return redirect(url_for('views.shop', products = products.query.all()))
 
-#todo unfollow
+# unfollow
 @views.route('/unfollow/<username>', methods=['POST'])
 @login_required
 def unfollow(username):
@@ -132,5 +133,6 @@ def unfollow(username):
 
 # filter by followed
 @views.route('/result-products-followed', methods = ['GET', 'POST'])
+@login_required
 def filterbyfollowed():
     return render_template('result-products.html', user=current_user, products = current_user.followed_products())

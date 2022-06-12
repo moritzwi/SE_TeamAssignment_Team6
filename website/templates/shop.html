@@ -8,10 +8,10 @@
 
 {% block content %}
 <div class="container">
-    <h3 class="h3">Products</h3>
+    <h3 class="h3" style="margin:0;">Products</h3>
     <div class="filter">
-        <div class="keywordsearch" style="align-self:right;">
-            <form action="{{ url_for('views.searchbykeyword') }}" method="POST" style="width: 500px;">
+        <div class="keywordsearch">
+            <form action="{{ url_for('views.searchbykeyword') }}" method="POST">
                 <label for="keywordsearch">Search via keyword</label>
                 <input type="text" class="input" id="keywordsearch" name="ksearch" style="width:65% !important;"/>
                 <input type = "submit" value = "Search" class="btn" style="width:100px !important;"></br>
@@ -25,8 +25,10 @@
             </form>
         </div>
     </div>
+    <br>
     <div class="product-row">
     </div>
+    <br>
     <div class="product-row">
         {% for product in products %}
         <div class="product-grid">
@@ -43,7 +45,7 @@
             </div>
             <div class="product-content">
                 <h3 class="title"><a href={{ url_for('views.product', id = product.id) }}>{{product.name}}</a></h3>
-                <div class="price">{{product.price}}</div>
+                <div class="price">$ {{product.price}}</div>
                 <a class="add-to-cart" href="#">+ Add To Cart</a>
             </div>
         </div>
